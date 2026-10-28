@@ -73,13 +73,11 @@ The Postman collection is in [`postman/atelier-store.postman_collection.json`](.
 On Windows, with JDK 21 and Node.js installed:
 
 ```powershell
-cd backend
-.\mvnw.cmd test
-cd ..\frontend
-npm run build
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
+.\scripts\verify.ps1
 ```
 
-The backend tests use H2 in local mode and do not verify a live MySQL server. Docker Compose was not run in the current environment because Docker CLI is unavailable.
+The verification script runs the backend tests, frontend tests, frontend production build, and Postman JSON validation. The backend tests use H2 in local mode and do not verify a live MySQL server. Docker Compose is a separate check and requires Docker Desktop.
 
 ## Notes
 
