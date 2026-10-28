@@ -11,8 +11,8 @@
 ## Commit checklist
 
 - [x] Commit 01 — Existing project baseline — `chore: establish existing ecommerce app baseline` — `10bd65f9abfc67cc1b2c41d566deae0bed88d7b1`
-- [ ] Commit 02 — Reproducible verification and accurate baseline record — `test: add reproducible project verification`
-- [ ] Commit 03 — Product response DTOs — `refactor(api): return product response DTOs`
+- [x] Commit 02 — Reproducible verification and accurate baseline record — `test: add reproducible project verification` — `1c5365a19ec25588c4ff71bb3a0040296106c4aa`
+- [x] Commit 03 — Generated JPA schema verification — `test(database): verify JPA schema relationships`
 - [ ] Commit 04 — Product lifecycle and validation — `feat(products): harden product lifecycle and validation`
 - [ ] Commit 05 — Category association integrity — `feat(categories): enforce category association integrity`
 - [ ] Commit 06 — Registration and current-user flow — `feat(auth): harden registration and current-user flow`
@@ -55,11 +55,20 @@ Last recorded verification before Commit 02:
 - Added `scripts/verify.ps1` to verify JDK 21 and run backend tests, frontend tests, frontend build, and Postman JSON parsing.
 - Updated README with the verification script and its real verification boundary (H2 tests are not live-MySQL verification).
 - Corrected the baseline to count as Commit 01 and replaced the former roadmap checklist with the approved Commit 02–25 work plan.
-- Verification results and this commit hash are recorded after commit creation and will be included in the next milestone log update.
+- Verification: `scripts\verify.ps1` passed with JDK 21; backend **9/9** tests passed, frontend **2/2** tests passed, Vite production build passed, and Postman JSON parsing passed.
+- Commit: `1c5365a19ec25588c4ff71bb3a0040296106c4aa`.
+
+## Commit 03 — Generated JPA schema verification
+
+- Added JDBC metadata integration tests for expected entity tables, key foreign-key relationships, cart uniqueness constraints, and two-decimal monetary columns.
+- Updated README to distinguish local H2 schema verification from unperformed live MySQL validation.
+- Verification: focused JPA schema tests **2/2 passed**; `scripts\verify.ps1` passed with backend **11/11 tests**, frontend **2/2 tests**, frontend production build, and Postman JSON validation.
+- Docker and the MySQL CLI are unavailable, so no live MySQL or Compose verification was performed. The tests validate the generated H2 MySQL-mode schema only.
+- Commit hash will be added to this entry after creation and carried in the next milestone log update; a commit cannot include its own hash without rewriting history.
 
 ## Final status
 
-- Verified total commits so far: **1 / 25** before Commit 02; do not claim completion until `git rev-list --count main` confirms 25 and all milestones are real.
+- Verified total commits so far: **2 / 25**; do not claim completion until `git rev-list --count main` confirms 25 and all milestones are real.
 - Current branch: `main`.
 - Remote push: not authorized; none performed.
 - Docker/MySQL runtime validation and subsequent approved milestones remain outstanding.

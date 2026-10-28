@@ -77,7 +77,7 @@ $env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
 .\scripts\verify.ps1
 ```
 
-The verification script runs the backend tests, frontend tests, frontend production build, and Postman JSON validation. The backend tests use H2 in local mode and do not verify a live MySQL server. Docker Compose is a separate check and requires Docker Desktop.
+The verification script runs the backend tests, frontend tests, frontend production build, and Postman JSON validation. Backend schema tests inspect generated tables, foreign keys, uniqueness constraints, and monetary column types using H2 in MySQL compatibility mode. They do not verify a live MySQL server; Docker Compose is a separate check and requires Docker Desktop.
 
 ## Notes
 
